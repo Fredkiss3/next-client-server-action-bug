@@ -1,37 +1,38 @@
-import Link from "next/link";
-import {
-  getCookieCounter,
-  getFileCounter,
-  incrementCookieCounter,
-  incrementFileCounter,
-} from "./_action";
+import { getCookieCounter, incrementCookieCounter } from "./_action";
+import { ClientForm } from "./client-form";
 
 export default async function Page() {
   const cookieCounter = await getCookieCounter();
-  const fileCounter = await getFileCounter();
   return (
     <main>
       <h1>Path: / (home) </h1>
-      <h1>
-        File Counter = {fileCounter} | cookie Counter = {cookieCounter}
-      </h1>
+      <h1>Counter = {cookieCounter}</h1>
 
-      <form>
-        <input type="hidden" name="_redirect" value={"something"} />
-        <button formAction={incrementCookieCounter}>
-          Increment cookie counter
-        </button>
-        <br />
-        <br />
-        <button formAction={incrementFileCounter}>
-          Increment file counter (uses revalidatePath)
-        </button>
-      </form>
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          gap: "5px",
+        }}
+      >
+        <h2>Server form : </h2>
+        <form>
+          <button formAction={incrementCookieCounter}>Increment counter</button>
+        </form>
+      </div>
 
       <br />
-      <Link href={"/target"}>Go to `/target`</Link>
-      <br />
-      <Link href={"/working"}>Go to `/working`</Link>
+
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          gap: "5px",
+        }}
+      >
+        <h2>Client form : </h2>
+        <ClientForm />
+      </div>
     </main>
   );
 }
