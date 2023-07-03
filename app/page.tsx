@@ -16,8 +16,8 @@ export default async function Page() {
         }}
       >
         <h2>Server form : </h2>
-        <form>
-          <button formAction={incrementCookieCounter}>Increment counter</button>
+        <form action={incrementCookieCounter}>
+          <button>Increment counter</button>
         </form>
       </div>
 

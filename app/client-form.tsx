@@ -4,8 +4,8 @@ import { incrementCookieCounter } from "./_action";
 
 export function ClientForm() {
   return (
-    <form>
-      <button formAction={incrementCookieCounter}>Increment counter</button>
+    <form action={incrementCookieCounter}>
+      <button>Increment counter</button>
     </form>
   );
 }
